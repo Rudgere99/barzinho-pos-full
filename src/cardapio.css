@@ -1,0 +1,248 @@
+
+/* =========================================================
+   cardapio.css  (APENAS estilos do Cardápio / Menu Editor)
+   Opção A: CSS separado pra não quebrar o resto do sistema.
+   ========================================================= */
+
+:root{
+  --menu-border: #e5e7eb;
+  --menu-muted: #6b7280;
+  --menu-surface: #ffffff;
+  --menu-surface-soft: #f9fafb;
+  --menu-hover: #f3f4f6;
+  --menu-accent: #16a34a;
+  --menu-danger: #dc2626;
+  --menu-danger-soft:#fee2e2;
+}
+
+/* Layout geral do editor (coluna form + coluna lista) */
+.menu-editor{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:18px;
+}
+
+@media (max-width: 900px){
+  .menu-editor{ grid-template-columns:1fr; }
+}
+
+/* ---------- FORM ---------- */
+.menu-form{
+  background: var(--menu-surface);
+  border:1px solid var(--menu-border);
+  border-radius:16px;
+  padding:14px;
+}
+
+.menu-form h4{
+  margin:0 0 10px;
+  font-size:1rem;
+}
+
+.menu-form label{
+  font-size:.85rem;
+  font-weight:600;
+  display:block;
+  margin:10px 0 6px;
+}
+
+.menu-form input[type="text"],
+.menu-form input[type="number"],
+.menu-form select,
+.menu-form textarea{
+  width:100%;
+  padding:.55rem .7rem;
+  border:1px solid var(--menu-border);
+  border-radius:10px;
+  font-size:.9rem;
+  background: var(--menu-surface-soft);
+  outline:none;
+}
+
+.menu-form textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.menu-form .menu-form-row{
+  display:flex; gap:8px;
+}
+
+.menu-form .menu-form-row > *{ flex:1; }
+
+.menu-form .menu-preview{
+  margin:10px 0 0;
+  border:1px dashed var(--menu-border);
+  padding:8px;
+  border-radius:12px;
+  background:#fafafa;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:120px;
+}
+
+.menu-form .menu-preview img{
+  max-width:100%;
+  max-height:160px;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+/* botão principal do form */
+.menu-form .btn-add{
+  margin-top:12px;
+  border:none;
+  border-radius:999px;
+  background: var(--menu-accent);
+  color:#fff;
+  padding:.55rem 1.1rem;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ---------- LISTA "CARDÁPIO ATUAL" (igual ao do atendente) ---------- */
+
+.menu-items{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:10px;
+}
+
+.menu-item-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px;
+  background: var(--menu-surface);
+  border:1px solid var(--menu-border);
+  border-radius:14px;
+  transition:.15s ease;
+}
+
+.menu-item-row:hover{
+  background: var(--menu-hover);
+  border-color:#dbe1ea;
+}
+
+/* bloco esquerdo com thumb + infos */
+.menu-item-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.menu-thumb{
+  width:64px;
+  height:64px;
+  border-radius:12px;
+  background:#f3f4f6;
+  border:1px solid var(--menu-border);
+  overflow:hidden;
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+}
+
+.menu-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.menu-thumb-empty{
+  font-size:.75rem;
+  color:var(--menu-muted);
+}
+
+/* info texto */
+.menu-info{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
+}
+
+.menu-name{
+  font-weight:700;
+  font-size:.98rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.menu-desc{
+  font-size:.85rem;
+  color:var(--menu-muted);
+  line-height:1.25;
+  max-width:520px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.menu-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.menu-category{
+  font-size:.7rem;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:999px;
+  background:#eef2ff;
+  color:#3730a3;
+}
+
+.menu-price{
+  font-weight:700;
+  font-size:.95rem;
+}
+
+/* bloco direito (ações) */
+.menu-item-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+}
+
+.menu-actions{
+  display:flex;
+  gap:6px;
+}
+
+/* botões editar/excluir */
+.menu-btn{
+  border:1px solid var(--menu-border);
+  background:#fff;
+  border-radius:999px;
+  padding:.35rem .8rem;
+  font-size:.78rem;
+  cursor:pointer;
+}
+
+.menu-btn:hover{ filter:brightness(.97); }
+
+.menu-btn-danger{
+  border:1px solid var(--menu-danger-soft);
+  color:var(--menu-danger);
+}
+
+/* small helpers */
+.menu-empty{
+  padding:14px;
+  background: var(--menu-surface);
+  border:1px dashed var(--menu-border);
+  border-radius:12px;
+  color:var(--menu-muted);
+  font-size:.9rem;
+  text-align:center;
+}
