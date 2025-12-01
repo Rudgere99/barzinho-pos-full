@@ -19,7 +19,7 @@ export default function Layout({ children }) {
       <header className="app-header" style={{ color: "#fff", backgroundColor: "#000" }}>
           <div className="Logo">
           <Link to="/login">
-            <img src="/Logo.PNG" style={{ height: "180px" }} />
+            <img src="/Logo.png" style={{ height: "180px" }} />
           </Link>
           </div>
         {role && (
