@@ -1,6 +1,6 @@
-
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import bgImage from "../assets/bg-login-barao.png";
 
 const GERENCIA_PASSWORD = "1234";
 
@@ -22,18 +22,27 @@ export default function Login() {
   };
 
   return (
-    <div className="card perfil-card">
-      <h2 style={{ textAlign: "center" }}>Escolha o perfil</h2>
-      <div className="role-buttons">
-        <button onClick={() => handleLogin("attendant", "/atendente")}>
-          Atendente
-        </button>
-        <button onClick={() => handleLogin("kitchen", "/cozinha")}>
-          Cozinha
-        </button>
-        <button onClick={() => handleLogin("manager", "/gerencia")}>
-          Gerência
-        </button>
+    <div
+      className="login-page"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="card perfil-card perfil-card-login">
+        <div className="role-buttons">
+          <button onClick={() => handleLogin("attendant", "/atendente")}>
+            Atendente
+          </button>
+          <button onClick={() => handleLogin("kitchen", "/cozinha")}>
+            Cozinha
+          </button>
+          <button onClick={() => handleLogin("manager", "/gerencia")}>
+            Gerência
+          </button>
+        </div>
       </div>
     </div>
   );

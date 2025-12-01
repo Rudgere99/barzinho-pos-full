@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext.jsx";
 import Login from "./pages/Login.jsx";
@@ -11,32 +10,50 @@ export default function App() {
   const { role } = useAuth();
 
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Login />} />
+    <Routes>
+      {/* Tela de login SEM layout (sem header) */}
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/atendente"
-          element={
-            role === "attendant" ? <AttendantDashboard /> : <Navigate to="/" />
-          }
-        />
+      {/* Rotas internas COM layout */}
+      <Route
+        path="/atendente"
+        element={
+          role === "attendant" ? (
+            <Layout>
+              <AttendantDashboard />
+            </Layout>
+          ) : (
+            <Navigate to="/" />
+          )
+        }
+      />
 
-        <Route
-          path="/cozinha"
-          element={role === "kitchen" ? <KitchenDashboard /> : <Navigate to="/" />}
-        />
+      <Route
+        path="/cozinha"
+        element={
+          role === "kitchen" ? (
+            <Layout>
+              <KitchenDashboard />
+            </Layout>
+          ) : (
+            <Navigate to="/" />
+          )
+        }
+      />
 
-        <Route
-          path="/gerencia"
-          element={role === "manager" ? <ManagerDashboard /> : <Navigate to="/" />}
-        />
-
-          <Route
-          path="/login"
-          element={role === "login" ? <Login /> : <Navigate to="/" />}
-        />
-      </Routes>
-    </Layout>
+      <Route
+        path="/gerencia"
+        element={
+          role === "manager" ? (
+            <Layout>
+              <ManagerDashboard />
+            </Layout>
+          ) : (
+            <Navigate to="/" />
+          )
+        }
+      />
+    </Routes>
   );
 }

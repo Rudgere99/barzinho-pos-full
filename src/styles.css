@@ -772,6 +772,7 @@ button, input, select, textarea {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.6s;
+  margin-top: 15px;
 }
 
 .perfil-card {
@@ -780,4 +781,18 @@ button, input, select, textarea {
 
 .Logo {
   margin-top: 15px;
+}
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perfil-card-login {
+  background: transparent;            /* ou rgba(255,255,255,0.1) se quiser um vidro */
+  box-shadow: none;
+  margin-top: 650px;
 }
